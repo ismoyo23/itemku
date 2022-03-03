@@ -40,7 +40,9 @@ function CardDiscription(props) {
               />
             </View>
             {props.next != '' ? (
-              <TouchableOpacity style={{marginLeft: 'auto'}}>
+              <TouchableOpacity
+                onPress={props.action}
+                style={{marginLeft: 'auto'}}>
                 <TextPrimary size={16} name={props.next} />
               </TouchableOpacity>
             ) : (

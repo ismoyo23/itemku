@@ -11,7 +11,7 @@ export let ImagesCard = props => {
     <Image
       style={{
         width: '100%',
-        height: 90,
+        height: props.fullHeight == true ? '100%' : 90,
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
       }}

@@ -1,12 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback, useMemo, useRef} from 'react';
 import HightCard from '../molecules/hightCard';
 import CardWithoutImg from '../molecules/cardWithoutImg';
 import CardDescription from '../molecules/cardDiscription';
 import FooterButton from '../molecules/footerButton';
 import {ScrollView, View, Alert} from 'react-native';
+import BottomShet from '../molecules/bottomShet';
 function DetailOrganism() {
   let [count, setCount] = useState(0);
   let [icon, setIcon] = useState('heart-o');
+  let [popUp, setPopUp] = useState(false);
   let troliAction = () => {
     setCount(count + 1);
     Alert.alert('Success', 'Produk sudah di tambahkan ke keranjang');
@@ -17,6 +19,15 @@ function DetailOrganism() {
       setIcon('heart');
     } else {
       setIcon('heart-o');
+    }
+  };
+
+  let showAction = event => {
+    event.preventDefault;
+    if (popUp == false) {
+      setPopUp(true);
+    } else {
+      setPopUp(false);
     }
   };
   return (
@@ -58,6 +69,7 @@ function DetailOrganism() {
           top={170}
           height={150}
           viewAll=""
+          action={showAction}
         />
 
         {/* list card*/}
@@ -74,6 +86,12 @@ function DetailOrganism() {
       </View>
 
       {/* card list */}
+
+      <BottomShet
+        bottomShet={popUp}
+        action={showAction}
+        discription="Ladies and gentlemen, bullying may seem like a small problem for some people. Most people may not realize that the damage caused by bullying can be so serious. It can be as serious as “death” in extreme cases. If you think that bullying is not a serious matter to deal with just because it merely hurt “feelings” then I have to tell you that you are completely wrong. This “merely hurt your feelings” thing can be the beginning of various worse scenarios such as physical assault, suicide, or any other kinds of violent acts carried out in the name of revenge. Ladies and gentlemen, bullying may seem like a small problem for some people. Most people may not realize that the damage caused by bullying can be so serious. It can be as serious as “death” in extreme cases. If you think that bullying is not a serious matter to deal with just because it merely hurt “feelings” then I have to tell you that you are completely wrong. This “merely hurt your feelings” thing can be the beginning of various worse scenarios such as physical assault, suicide, or any other kinds of violent acts carried out in the name of revenge. Ladies and gentlemen, bullying may seem like a small problem for some people. Most people may not realize that the damage caused by bullying can be so serious. It can be as serious as “death” in extreme cases. If you think that bullying is not a serious matter to deal with just because it merely hurt “feelings” then I have to tell you that you are completely wrong. This “merely hurt your feelings” thing can be the beginning of various worse scenarios such as physical assault, suicide, or any other kinds of violent acts carried out in the name of revenge."
+      />
 
       <FooterButton
         action={troliAction}
